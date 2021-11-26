@@ -38,6 +38,14 @@ Author: {
   avatarUrl
 }
 
+### Branching & Merging
+
+FEATURE BRANCH WORKFLOW => "GITHUB FLOW"
+
+Features in BRANCHES
+- new branch
+- pull request gegen main branch
+
 
 ### Other notes
 

@@ -1,3 +1,5 @@
+import './config.js'
+import './db-connect.js'
 import express from 'express'
 import cors from 'cors'
 import blogRouter from './routes/blogs.js'
