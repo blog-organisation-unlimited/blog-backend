@@ -6,10 +6,29 @@ const blogRouter = express.Router();
 
 // prefix route /blogs
 blogRouter.get('/', async (req, res) => {
-
   const blogsAll = await Blog.find()
+    .populate("author")
+
   res.json( blogsAll );
 });
+
+blogRouter.get("/latest", (req, res) => {
+  res.json({ message: "Latest posts", posts:[] })
+})
+
+
+// /blogs/123456 => req.params.id  
+blogRouter.get("/:id", async (req, res) => {
+
+  const { id } = req.params
+  console.log({id})
+
+
+  const blog = await Blog.findById( id )
+  res.json(blog)
+})
+
+
 
 blogRouter.post('/', (req, res) => {
   const { title, author } = req.body;
