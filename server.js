@@ -3,6 +3,7 @@ import './db-connect.js'
 import express from 'express'
 import cors from 'cors'
 import blogRouter from './routes/blogs.js'
+import authorRouter from './routes/author.js'
 import commentRouter from './routes/comments.js'
 import morgan from 'morgan'
 
@@ -18,6 +19,7 @@ app.get("/", (req, res) => {
   res.send("<h2>Welcome broInnen to blogs API unlimited</h2>")
 })
 
+app.use("/authors", authorRouter) // hook in authors supabi into main api
 app.use("/blogs", blogRouter) // hook in blog subapi into main api
 app.use("/comments", commentRouter) // hook in comments subapi into main api
 
