@@ -7,7 +7,7 @@ const { Schema, model } = mongoose
 const CommentSchema = new Schema(    {
   text: { type: String, required: true },
   author: {
-    ref: 'Author',
+    ref: 'User',
     type: Schema.Types.ObjectId
   },
   likes: { type: Number, default: 0},
@@ -20,11 +20,11 @@ const CommentSchema = new Schema(    {
 )
 
 // rules for each document in blog collection
-const BlogSchema = new Schema({
+const PostSchema = new Schema({
   title: { type: String, required: [true, 'Post without title? Are your serious?'] },
   text: { type: String, required: true },
   author: {
-    ref: 'Author',
+    ref: 'User',
     type: Schema.Types.ObjectId
     // ID des Authors => points to an Author in authors collection
   },
@@ -38,6 +38,6 @@ const BlogSchema = new Schema({
 })
 
 // create manager to manage blog data for me against database
-const Blog = model("Blog", BlogSchema) //  Blog => blogs => searches for this collection in database
+const Post = model("Post", PostSchema) //  Post => blogs => searches for this collection in database
 
-export default Blog
+export default Post
