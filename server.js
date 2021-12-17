@@ -2,8 +2,8 @@ import './config.js'
 import './db-connect.js'
 import express from 'express'
 import cors from 'cors'
-import blogRouter from './routes/blogs.js'
-import authorRouter from './routes/author.js'
+import postRouter from './routes/posts.js'
+import userRouter from './routes/users.js'
 import commentRouter from './routes/comments.js'
 import morgan from 'morgan'
 
@@ -19,8 +19,8 @@ app.get("/", (req, res) => {
   res.send("<h2>Welcome broInnen to blogs API unlimited</h2>")
 })
 
-app.use("/authors", authorRouter) // hook in authors supabi into main api
-app.use("/blogs", blogRouter) // hook in blog subapi into main api
+app.use("/users", userRouter) // hook in authors supabi into main api
+app.use("/posts", postRouter) // hook in blog subapi into main api
 app.use("/comments", commentRouter) // hook in comments subapi into main api
 
 // 404 catch missing route handler

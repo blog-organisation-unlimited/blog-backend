@@ -1,29 +1,29 @@
 import './config.js'
 import './db-connect.js'
 import mongoose from 'mongoose'
-import Blog from './models/Blog.js'
-import Author from './models/Author.js'
+import Post from './models/Post.js'
+import User from './models/User.js'
 
 // clear dummy data
-await Blog.deleteMany({})
-await Author.deleteMany({})
+await Post.deleteMany({})
+await User.deleteMany({})
 
 
 const authors = [
-  { name: "Nikolas" }, 
-  { name: "Rob" },
-  { name: "Lover" },
-  { name: "Hater" },
+  { name: "Nikolas", email: "nik@nik.nik", password: "nik23" }, 
+  { name: "Rob", email: "rob@rob.rob", password: "rob13" },
+  { name: "Lover", email: "love@love.love", password: "l§v§e23" },
+  { name: "Hater", email: "hate@hate.hate", password: "hate312" },
 ]
 
 // SEED authors first
-const authorsDb = await Author.create( authors )
+const authorsDb = await User.create( authors )
 
 console.log( authorsDb )
 
-const blogs = [
+const posts = [
   {
-    title: 'Blogs Unlimited launched. Check it out!',
+    title: 'Posts Unlimited launched. Check it out!',
     text: "Lorem ipsum. Lorem ipsum",
     author: authorsDb[1], // => Rob
     likes: 5,
@@ -48,9 +48,9 @@ const blogs = [
 ];
 
 
-// // seeeeed in some initial blogs
-const blogsDb = await Blog.create( blogs )
-console.log(blogsDb)
+// // seeeeed in some initial posts
+const postsDb = await Post.create( posts )
+console.log(postsDb)
 
 
 mongoose.connection.close() // close connection and quit script
